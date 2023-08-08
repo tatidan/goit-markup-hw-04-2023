@@ -26,7 +26,7 @@
           >
           <ul class="header-navigation list">
             <li class="header-nav-item">
-              <a href="./index.html" class="nav-link link">Studio</a>
+              <a href="./index.html" class="nav-link current link">Studio</a>
             </li>
             <li class="header-nav-item">
               <a href="./portfolio.html" class="nav-link link">Portfolio</a>
@@ -57,7 +57,9 @@
       <section class="hero section">
         <div class="container">
           <h1 class="hero-title">Effective Solutions for Your Business</h1>
-          <button type="button" class="hero-button">Order Service</button>
+          <button type="button" class="hero-button" data-modal-open>
+            Order Service
+          </button>
         </div>
       </section>
 
@@ -419,6 +421,16 @@
         </div>
       </div>
     </footer>
+
+    <div class="modal-backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="modal-button" type="button" data-modal-close>
+          <svg class="icon" width="8" height="8">
+            <use href="./icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
 
     <script src="./js/modal.js"></script>
   </body>
