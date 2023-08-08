@@ -232,7 +232,9 @@ img {
 }
 
 .advantage-icon-wrap {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 112px;
   border-radius: 4px;
   background-color: var(--light-color);
@@ -381,11 +383,6 @@ img {
 .customers-list-item {
   width: 168px;
   height: 88px;
-  /* padding: 16px 32px;
-  cursor: pointer;
-  border-radius: 4px;
-  border: 1px solid var(--lightslate);
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .customer-link {
@@ -394,25 +391,23 @@ img {
   padding: 16px 32px;
   border-radius: 4px;
   border: 1px solid var(--lightslate);
+  color: var(--lightslate);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transition зі значенням border-color 250ms
+      cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.customers-list-item:hover .customer-link,
-.customers-list-item:focus .customer-link {
+.customer-link:hover,
+.customer-link:focus {
   border-color: var(--pressed-state-color);
+  color: var(--pressed-state-color);
 }
 
 .customer-link .icon {
-  fill: var(--lightslate);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.customers-list-item:hover .customer-link .icon,
-.customers-list-item:focus .customer-link .icon {
-  fill: var(--pressed-state-color);
+  fill: currentColor;
 }
 
 /* FOOTER */
@@ -434,6 +429,7 @@ img {
 
 .footer .container {
   display: flex;
+  align-items: baseline;
 }
 
 .footer-left-part {
@@ -502,7 +498,10 @@ img {
   line-height: inherit;
   padding: 12px 24px;
   border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .gallery-buttons > li:not(:last-child) {
   margin-right: 24px;
@@ -510,11 +509,11 @@ img {
 
 .gallery-button:hover,
 .gallery-button:focus {
-  background-color: var(--pressed-state-color);
   color: var(--white-color);
+  background-color: var(--pressed-state-color);
+  border-color: transparent;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12),
     0px 2px 1px 0px rgba(0, 0, 0, 0.08), 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
 }
 
 .gallery-cards {
@@ -526,9 +525,10 @@ img {
 
 .gallery-card {
   width: calc((100% - 48px) / 3);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+}
+
+.gallery-card .link {
+  display: block;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -539,31 +539,30 @@ img {
     0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 
-.gallery-card-image {
-  width: 100%;
+.gallery-image-overlay {
+  position: relative;
+  overflow: hidden;
 }
 
-.gallery-card .overlay {
+.overlay-description {
+  background-color: var(--primary-brand-color);
+  color: var(--light-color);
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: 0.32px;
+  padding: 40px 32px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 300px;
-  background-color: var(--primary-brand-color);
-  padding: 40px 32px;
-  display: none;
+  height: 100%;
   transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-card .overlay .overlay-description {
-  letter-spacing: 0.32px;
-  color: var(--light-color);
-}
-
-.gallery-card:hover .overlay {
-  display: block;
+.gallery-card:hover .overlay-description,
+.gallery-card:focus .overlay-description {
   transform: translateY(0%);
-  transition: transform 250ms ease-in-out;
 }
 
 .gallery-card-content {
